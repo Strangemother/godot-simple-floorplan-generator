@@ -28,6 +28,10 @@ export var backstep = -1
 # Considering a standard scale is `1`, the base mesh (cube)
 # has a base size of 2 _world units_. This seems to be counted in floor grid spacing
 export var cell_width = 2
+var active_mat = preload("res://green_mat.tres")
+var red_mat = preload("res://red_mat.tres")
+const OnObj = preload("res://On.tscn")
+const Wall = preload("res://Wall.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -65,8 +69,6 @@ func gen_space(width, places):
 	for wall in walls:
 		add_child(wall.wall)
 
-var active_mat = preload("res://green_mat.tres")
-var red_mat = preload("res://red_mat.tres")
 
 func make_floor(places, size, width, height):
 	var points = []
@@ -87,7 +89,6 @@ func make_floor(places, size, width, height):
 		points.append({'item':item, 'v':v})
 	return points
 
-const OnObj = preload("res://On.tscn")
 
 func make_walls(points, places, size, width, height):
 
@@ -128,7 +129,6 @@ func make_walls(points, places, size, width, height):
 			walls.append(wall_info(point, row, col, Vector2(0, -1), 3.14*-.5))
 
 		if walls.size() == 4:
-			print('Ophsm')
 			point.item.get_node('On').material_override = red_mat
 
 		all_walls += walls
@@ -164,12 +164,18 @@ func make_grid_item(value, _index, x, z):
 	add_child(inst)
 	return inst
 
-const Wall = preload("res://Wall.tscn")
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(delta):
 	var el = get_node('/root/World/Space')
-	el.rotation_degrees.y += 0.1
-	#print(el)
-#	pass
+	el.rotation_degrees.y += delta*5
+
+
+func _on_CanvasLayer_configure_space(result):
+	if result == null:
+		print('Null result')
+		return
+	self.width = int(result.count)
+	if 'items' in result:
+		self.placement = result.items
+		gen_space(width, placement)
