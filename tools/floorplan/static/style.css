@@ -1,0 +1,67 @@
+div#app {
+    border: solid 2px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid {
+    /* border: solid; */
+    justify-content: center;
+    display: flex;
+    padding: 0em;
+    border: solid #bbbbbb;
+    margin: 3em;
+}
+
+li.cell[data-value="1"] {
+    background: #3fb16d;
+}
+
+li.cell.painting {
+    background: #e4a6b1;
+}
+
+li.cell {
+    width: 3em;
+    height: 3em;
+    border: solid 2px #BBB;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #DDD;
+    cursor: pointer;
+    user-select: none;
+}
+
+.grid ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.cell.break {
+  page-break-after: always;
+  break-after: auto;
+  margin-right: auto !important;
+  flex-grow: 1;
+  border-color: red !important;
+}
+
+li.row {}
+
+ul.cells {
+    flex-direction: row;
+}
+
+li.cell:hover {
+    background: #CCC;
+}

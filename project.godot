@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "",
+"class": "GitAPI",
+"language": "NativeScript",
+"path": "res://git_api.gdns"
+} ]
 _global_script_class_icons={
-
+"GitAPI": ""
 }
 
 [application]
@@ -18,11 +23,24 @@ _global_script_class_icons={
 config/name="rooms"
 config/icon="res://icon.png"
 
+[defaults]
+
+config_version=4
+_global_script_classes=[  ]
+_global_script_class_icons={
+
+}
+
 [display]
 
 window/vsync/use_vsync=false
 
+[gdnative]
+
+singletons=[ "res://git_api.gdnlib" ]
+
 [rendering]
 
-quality/filters/msaa=2
+quality/shadows/filter_mode=2
+quality/filters/msaa=3
 environment/default_environment="res://default_env.tres"

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Floorplan</title>
+</head>
+<body>
+{% raw %}
+
+    <div id="app" @mouseup=mouseup>
+        <form>
+            <label>
+                <span class="label">Size</span>
+                <input type="text" id="size" ref='size' :value=count>
+            </label>
+            <button type="submit" @click=updateSize>Send</button>
+            <button type="button" @click=restore>restore</button>
+            <button type="button" @click=save>save</button>
+        </form>
+        <div class="grid">
+            <ul class="rows" @mousedown=mousedown>
+                <li v-for='(row, rowIndex) in items' class='row'>
+                    <ul class="cells">
+                        <li class="cell"
+                            @click='toggle_cell'
+                            :row=row :cell=cell
+                            :cellIndex=cellIndex
+                            :rowIndex=rowIndex
+                            :data-value=cell
+                            ref='cell'
+                            @mousemove=mousemove
+                            v-for='(cell, cellIndex) in row'>
+                            <div class="value">{{ cell }}</div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="string">
+            <p>
+                {{ contentString() }}
+            </p>
+        </div>
+
+        <form>
+            <label>
+                <span class="label">Name</span>
+                <input type="text" id="name" ref='name' :value=filename>
+            </label>
+            <label>
+                <span class="label">Size</span>
+                <input type="text" id="size" ref='size' :value=count>
+            </label>
+            <label>
+                <span class="label">Content</span>
+                <input type="text" id="name" ref='name' :value=contentString()>
+            </label>
+            <button type="submit" @click=sendSave>Send</button>
+        </form>
+    </div>
+
+
+{% endraw %}
+    <script src="vue.js"></script>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="style.css">
+</body>
+</html>

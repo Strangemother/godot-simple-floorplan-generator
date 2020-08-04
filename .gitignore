@@ -1,2 +1,4 @@
 tools\floorplan\env 
 .import/ 
+tools/floorplan/env/ 
+tools/floorplan/env/** 

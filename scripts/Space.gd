@@ -28,6 +28,7 @@ export var backstep = -1
 # Considering a standard scale is `1`, the base mesh (cube)
 # has a base size of 2 _world units_. This seems to be counted in floor grid spacing
 export var cell_width = 2
+
 var active_mat = preload("res://green_mat.tres")
 var red_mat = preload("res://red_mat.tres")
 const OnObj = preload("res://On.tscn")

@@ -1,11 +1,18 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Axis.tscn" type="PackedScene" id=1]
+[ext_resource path="res://dark.tres" type="Material" id=2]
 
 [sub_resource type="CubeMesh" id=1]
 
 [sub_resource type="SpatialMaterial" id=2]
-albedo_color = Color( 0.933333, 0.984314, 0.027451, 1 )
+params_cull_mode = 1
+albedo_color = Color( 1, 0.866667, 0.509804, 1 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.278431, 0.670588, 0.776471, 1 )
+
+[sub_resource type="PlaneMesh" id=3]
 
 [node name="Spatial" type="Spatial"]
 
@@ -14,6 +21,22 @@ transform = Transform( 0.153771, 0, 0, 0, 0.153535, 0, 0, 0, 0.153771, 0, 0.5531
 visible = false
 
 [node name="Wall" type="MeshInstance" parent="."]
-transform = Transform( 0.0154771, 0, 0, 0, 0.263289, 0, 0, 0, 1, 0, 0.263376, 0 )
+transform = Transform( 0.0154771, 0, 0, 0, 0.263289, 0, 0, 0, 1, 0.0119662, 0.263376, 0 )
 mesh = SubResource( 1 )
 material/0 = SubResource( 2 )
+
+[node name="Lip" type="MeshInstance" parent="."]
+transform = Transform( 0.0154771, 0, 0, 0, 0.00698375, 0, 0, 0, 1, 0, 0.520754, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 4 )
+
+[node name="Inner" type="MeshInstance" parent="."]
+transform = Transform( -6.76526e-10, -0.263289, 0, 0.255069, -1.89668e-07, 0, 0, 0, 1, 0.02, 0.257, 0 )
+visible = false
+mesh = SubResource( 3 )
+material/0 = SubResource( 2 )
+
+[node name="Outer" type="MeshInstance" parent="."]
+transform = Transform( -1.15398e-08, -0.263, 0, 0.264, -1.14961e-08, 0, 0, 0, 1, -0.015, 0.250027, 0 )
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )

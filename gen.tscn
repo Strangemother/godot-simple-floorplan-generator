@@ -65,5 +65,15 @@ placeholder_text = "Content Name"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.858002, 0.513646, 0, -0.513646, 0.858002, 0, 4.28107, 1.14221 )
+light_energy = 1.11
+light_indirect_energy = 6.49
+light_specular = 0.21
+light_bake_mode = 2
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_contact = 1.0
 [connection signal="configure_space" from="CanvasLayer" to="Space" method="_on_CanvasLayer_configure_space"]
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer" method="_on_Button_pressed"]
