@@ -31,7 +31,12 @@ to `http://127.0.0.1:8000/floorplan` for a JSON representation of a room.
 
 The ugly cheap web ui simply serves to host the clicky flooplan editor, and a
 base to fetch plans within Godot. Within the `tools/` folder the `floorplan/`
-app, boot the Flask `server.py`:
+app, boot the Flask `server.py`.
+
+!!! Note
+   Yes I know all of this is ugly and broken as hell so please don't judge me.
+   I spent all of some minutes building.
+
 
 Requirements:
 
@@ -60,3 +65,31 @@ Then the server:
 And you'll see something like this:
 
 ![plan-editor](plan-editor.PNG)
+
+You'll see in this example I created a 6x6 grid called "eulander".
+
+It produces JSON similar to this:
+
+```json
+{
+    "name": "eulander",
+    "count": 6,
+    "items": [
+        1,
+        1,
+        1,
+        1,
+        /* ... */
+    ]
+}
+```
+
+You can apply this to the scene by using "fetch" with your new name.
+
+![create-eulander](create-eulander.PNG)
+
+The scene will randomly scramble the grid upon mouse input. If you click (or
+scroll the wheel :P) a new scene will generate with the given size. In this
+exampe a 6x6 grid:
+
+![eulander-scramble](eulander-scramble.PNG)
